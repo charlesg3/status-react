@@ -1,0 +1,7 @@
+version: '3'
+services:
+  status-im:
+    build: .
+    volumes:
+      - ./src:/home/developer/status/src
+
