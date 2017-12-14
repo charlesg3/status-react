@@ -5,13 +5,9 @@ set -e
 script_dir=$(dirname $0)
 pushd $script_dir/..
 
-docker build --tag status-im .
-
-docker run -i \
-    --rm=true \
-    -v `pwd`:/home/developer/status \
-    status-im \
-    bash <<EOF
+docker-compose run --rm \
+  --entrypoint bash \
+  status-im <<EOF
 set -e
 ./re-natal use-figwheel
 lein test-cljs
